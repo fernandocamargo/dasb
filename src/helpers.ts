@@ -8,7 +8,7 @@ import * as Types from './types';
 
 export const check = () => document.getElementById('root') || Promise.reject();
 
-export const debug = () => void report(console.log);
+export const debug = () => void report();
 
 export const initialize = (element: Types.Element) => createRoot(element);
 

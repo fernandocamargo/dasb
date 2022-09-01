@@ -4,15 +4,16 @@ import styled from 'styled-components';
 import * as Types from './types';
 
 export default (component: Types.Default) => styled(component)`
-  border: solid 1px black;
-  margin: 1rem;
+  background-color: #f4f4f4;
   padding: 1rem;
 
   h1 {
     font-family: ${property('theme.typography.emphasis')};
   }
 
-  p {
-    margin-top: 1rem;
+  & > {
+    *:not(:first-child) {
+      margin-top: 1rem;
+    }
   }
 `;

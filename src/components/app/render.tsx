@@ -1,5 +1,8 @@
-import { Suspense as OnDemand } from 'react';
+// @ts-nocheck
+import React, { Suspense, SuspenseList } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+
+import { Lab } from 'components';
 
 import * as Types from './types';
 import { About, Home } from './routes';
@@ -23,6 +26,18 @@ export default (({ className }) => (
       erat, posuere a neque ut, efficitur pellentesque arcu. Aliquam sit amet
       pharetra eros, quis pretium metus.
     </p>
+    <h2>With &lt;SuspenseList /&gt;</h2>
+    <SuspenseList revealOrder="together">
+      <Lab />
+      <Lab />
+      <Lab />
+    </SuspenseList>
+    <h2>Without &lt;SuspenseList /&gt;</h2>
+    <>
+      <Lab />
+      <Lab special />
+      <Lab />
+    </>
     <nav>
       <ul>
         <li>
@@ -33,11 +48,11 @@ export default (({ className }) => (
         </li>
       </ul>
     </nav>
-    <OnDemand fallback="Loading...">
+    <Suspense fallback="Loading routes...">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
       </Routes>
-    </OnDemand>
+    </Suspense>
   </div>
 )) as Types.Default;
